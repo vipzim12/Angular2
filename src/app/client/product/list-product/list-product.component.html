@@ -1,0 +1,56 @@
+<div class="collectionDisplay">
+  <div class="collectionResultProducts" id="sp-1">
+    <div class="coDownProduct" *ngFor="let product of products | paginate :{ itemsPerPage: 12, currentPage: page}">
+      <div class="productGrid">
+        <div class="productSale" *ngIf="product.promotion > 0">
+          <span>-{{product.promotion}}%</span>
+        </div>
+
+        <div class="productImg">
+          <a href="#" title="{{product.name}}">
+            <!-- <img src="../../../assets/shop/images/" data-original="../../../assets/shop/images/iphone5s.jpg" class="img-fix"
+            alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;"> -->
+            <img src="{{product.linkImage}}" data-original="../../../assets/shop/images/iphone5s.jpg" class="img-fix" alt="{{product.name}}"
+              style="display: inline;">
+          </a>
+          <div class="hoverButtons">
+            <span data-toggle="modal" data-target="#998">
+              <a class="button quickview-btn" ngbTooltip="Cho vào giỏ hàng">
+                <i class="fa fa-shopping-cart"></i>
+              </a>
+            </span>
+
+            <span data-toggle="modal" data-target="#999">
+              <a class="button quickview-btn" ngbTooltip="Xem nhanh">
+                <i class="fa fa-search"></i>
+              </a>
+            </span>
+
+            <a href="#" class="button skype" ngbTooltip="Tư vấn qua Skype">
+              <i class="fab fa-skype"></i>
+            </a>
+          </div>
+        </div>
+        <h3>
+          <a routerLink="/product/detail/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+        </h3>
+        <div class="productPrice">
+          <del *ngIf="product.promotion > 0">{{product.price |currency:'VND':''}}₫</del>
+          <span>{{product.price -product.price*product.promotion/100 |currency:'VND':''}}₫</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="pager clearfix">
+    <span class="current" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 1">1</span>
+    <a href="#" data-page="2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 2">2</a>
+    <a href="#" data-page="3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 3">3</a>
+    <a href="#" data-page="2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang kế tiếp">
+      <i class="fa fa-angle-right"></i>
+    </a>
+
+  </div> -->
+  <pagination-controls maxSize="6" class="d-flex justify-content-center mt-3" (pageChange)=" page = $event"></pagination-controls>
+</div>

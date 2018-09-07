@@ -1,0 +1,34 @@
+<h1 class="text-center">
+  Add Category</h1>
+<form #addNewCateGory="ngForm" (ngSubmit)="insertCategory(addNewCateGory.value)">
+  <!-- <div class="form-group">
+    <label for="idCategory">Id Category:</label>
+    <input  type="idCategory" [(ngModel)] = "category.id" ngModel name="idCategory" class="form-control" id="idCategory">
+  </div> -->
+
+
+
+  <div class="form-group" [class.has-error]="gCategory.touched && gCategory.errors?.required">
+    <label for="nameGCategory">Name Group Category:</label>
+    <select class="form-control" required name="gCategory" #gCategory="ngModel" ngModel>
+      <option value="" disabled selected>Choose Group Category</option>
+      <option *ngFor="let gCategory of gCategories" [ngValue]="gCategory">
+        {{ gCategory.name }}
+      </option>
+    </select>
+
+    <small class="help-block" *ngIf="gCategory.touched && gCategory.errors?.required">Group-Category name is required!!!
+      </small>
+    <!-- <input type="nameGCategory" [(ngModel)] = "category.idGroup"  ngModel name="nameGCategory" class="form-control" id="nameGCategory"> -->
+  </div>
+
+
+  <div class="form-group" [class.has-error]="nameCategory.touched && nameCategory.errors?.required">
+    <label for="nameCategory">Name Category:</label>
+    <input type="nameCategory" required #nameCategory="ngModel" ngModel name="nameCategory" class="form-control" id="nameCategory">
+    <small class="help-block" *ngIf="nameCategory.touched && nameCategory.errors?.required">Category name is required!!!
+      </small>
+  </div>
+
+  <button class="btn btn-primary" [disabled]="addNewCateGory.invalid">Submit</button>
+</form>

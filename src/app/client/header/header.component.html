@@ -1,0 +1,243 @@
+<nav class="offset-menu offset-menu-left">
+    <div class="offset-menu-wrapper">
+        <ul class="list-unstyled mobile-menu">
+            <li>
+                <a routerLink="/">Trang chủ</a>
+            </li>
+            <li class="has-sub">
+                <a routerLink="/product">Sản phẩm</a>
+                <em data-target="#sub-menu-product" data-toggle="collapse" class="collapsed">
+                    <i class="fa fa-angle-down"></i>
+                </em>
+                <ul class="list-unstyled collapse panel-group" id="sub-menu-product">
+                    <li *ngFor="let menu of menus" class="has-sub panel">
+                        <a routerLink="/product/group-category/{{menu.id}}">{{menu.name}}</a>
+                        <em data-parent="#sub-menu-product" data-target="#sub-sub-menu-7" data-toggle="collapse" class="collapsed">
+                            <i class="fa fa-angle-down"></i>
+                        </em>
+                        <ul class="list-unstyled collapse" id="sub-sub-menu-7">
+                            <li *ngFor="let category of menu.category">
+                                <a routerLink="/product/category/{{category.id}}">{{category.name}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/news">Tin tức</a>
+            </li>
+            <li>
+                <a routerLink="/introduce">Giới thiệu</a>
+            </li>
+            <li>
+                <a routerLink="/contact">Liên hệ</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<header class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                    <a href="#" class="welText">Chào bạn, cửa hàng có thể giúp gì cho bạn ?</a>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-8 col-lg-8">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li>
+                            <a routerLink="/rules">Điều khoản</a>
+                        </li>
+                        <li>
+                            <a routerLink="/policy">Chính sách</a>
+                        </li>
+                        <li>
+                            <a routerLink="/introduce">Giới thiệu</a>
+                        </li>
+                        <li *ngIf="username==null">
+                            <a routerLink="/register">Đăng ký</a>
+                        </li>
+                        <li *ngIf="username==null">
+                            <a routerLink="/login">Đăng nhập</a>
+                        </li>
+                        <li *ngIf="username!=null">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    Hello {{username}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="headerPanelMobile clearfix panel-group" id="headerPanelMobile">
+            <div class="panel">
+                <a class="first" id="LeftPush">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="panel">
+                <a href="#headerPanelMobileListPhone" class="dropDownButton" data-toggle="collapse" data-parent="#headerPanelMobile">
+                    <i class="fa fa-phone"></i>
+                </a>
+                <div class="headerPanelMobileDropList dropList collapse" id="headerPanelMobileListPhone">
+                    <a href="tel:0868155456">0868.155.456</a>
+                </div>
+            </div>
+            <div class="panel">
+                <a href="#" class="headerPanelMobileCart">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="cartCount">1</span>
+                </a>
+            </div>
+            <div class="panel">
+                <a href="#headerPanelMobileListLinks" class="dropDownButton" data-toggle="collapse" data-parent="#headerPanelMobile">
+                    <i class="fa fa-ellipsis-v"></i>
+                </a>
+                <div class="headerPanelMobileDropList dropList collapse" id="headerPanelMobileListLinks">
+                    <a href="/rules">Điều khoản</a>
+                    <a href="/policy">Chính sách</a>
+                    <a href="/introduce">Giới thiệu</a>
+                    <a href="/registor">Đăng ký</a>
+                    <a href="/login">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Header -->
+    <div class="mid-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <h1 class="logo">
+                        <a routerLink="/">
+                            <span>skymarket</span>
+                            <img src="assets/shop/images/logo.png" alt="skymarket" class="img-responsive">
+                        </a>
+                    </h1>
+                </div>
+                <div class="inputSearch col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <ng-select [items]="product | async" [loading]="productLoading" [typeahead]="productInput" bindLabel="name" [(ngModel)]="selectedProduct"
+                        (change)="onChange($event)"> placeholder="Tìm kiếm sản phẩm..." class="input-control" title="Nhập từ khóa tìm kiếm sản phẩm">
+                        <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                            <!-- <div style="margin: 10px 0;" class="card"> -->
+                            <div class="card-body row">
+                                <div class="col-md-3">
+                                    <img class="img-responsive" [src]="item.linkImage" />
+                                </div>
+
+                                <div class="col-md-9">
+                                    <h5 class="card-title" [ngOptionHighlight]="search">{{item.name}}</h5>
+                                    <h6 class="card-subtitle mb-2" style="color: red">{{product.price-(product.price*product.promotion/100) |currency:'VND':''}}đ
+                                        <span>
+                                            <del class="card-subtitle mb-2 text-muted">{{item.price|currency:'VND':''}}đ</del>
+                                        </span>
+                                    </h6>
+
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </ng-template>
+                    </ng-select>
+                    <button class="button btnSearch" (click)="onSearch()" title="Tìm kiếm">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-5 col-lg-5">
+                    <div class="miniCart">
+                        <a routerLink="/cart" class="linkOver"></a>
+                        <i class="spr ico_cart"></i>
+                        <b>Giỏ hàng</b>
+                        <br>
+                        <span class="cartCount">{{cartCount}}</span> sản phẩm
+                        <div class="miniCartWrapper">
+                            <div class="nano-content">
+                                <div class="hasItem">
+                                    <div class="clearfix bottomMiniCart">
+                                        <span class="left">Tổng cộng</span>
+                                        <span class="right totalCart">0₫</span>
+                                    </div>
+                                </div>
+                                <div class="noItem" style="">giỏ hàng của bạn!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotLine">
+                        <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                        <a href="tel:0868155456" class="linkOver"></a>
+                        <b>0868.155.456</b>
+                        <br>
+                        <span>(8:00 - 18:00)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mid Header -->
+    <div class="bottom-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar-menu">
+                    <h3 class="hidden-xs hidden-sm hidden-md cateTitle listproduct active">
+                        <i class="spr icoBar"></i>Danh mục sản phẩm</h3>
+                    <h3 class="hidden-lg cateTitle dropDownButton collapsed" data-toggle="collapse" data-target="#listCateMobile">
+                        <i class="spr icoBar"></i>Danh mục sản phẩm</h3>
+                    <div class="hidden-lg listCateMobile dropList collapse" id="listCateMobile">
+                        <ul class="list-unstyled hasIcon mobile-menu panel-group" id="panel-mobile-menu">
+                            <li *ngFor="let menu of menus" class="hasSubListCate panel">
+                                <a routerLink="/product/group-category/{{menu.id}}">{{menu.name}}</a>
+                                <em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-1">
+                                    <i class="fa fa-angle-down"></i>
+                                </em>
+                                <ul class="list-unstyled SubListCate collapse" id="sub-menu-1">
+                                    <li *ngFor="let category of menu.category">
+                                        <a routerLink="/product/category/{{category.id}}">{{category.name}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
+                    <ul class="list-unstyled mainNav list-inline">
+                        <li class="active">
+                            <a routerLink="/">Trang chủ</a>
+                        </li>
+                        <li class="hasMega">
+                            <a routerLink="/product">Sản phẩm</a>
+                            <div class="megaMenu">
+                                <div *ngFor="let menu of menus" class="col-md-4">
+                                    <h2 class="titleDecoration">
+                                        <span class="line"></span>
+                                        <a routerLink="/product/group-category/{{menu.id}}" class="title">{{menu.name}}</a>
+                                    </h2>
+                                    <ul class="list-unstyled listMenu">
+                                        <li *ngFor="let category of menu.category">
+                                            <a routerLink="/product/category/{{category.id}}">{{category.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/news">Tin tức</a>
+                        </li>
+                        <li>
+                            <a href="/introduce">Giới thiệu</a>
+                        </li>
+                        <li>
+                            <a href="/contact">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bottom Header -->
+</header>

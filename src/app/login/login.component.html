@@ -1,0 +1,77 @@
+<!-- <div class="container d-flex justify-content-center align-items-center">
+  <form #formLogin="ngForm" (ngSubmit)="login(formLogin)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Username</label>
+      <input type="text" class="form-control" ngModel name="username" #username="ngModel" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" ngModel name="password" #passwords="ngModel" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div *ngIf="showEr" class="alert alert-danger">
+      <strong>Error!</strong> {{tb}}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div> -->
+
+
+<div class="container">
+  <h1 class="form-heading">login Form</h1>
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Admin Login</h2>
+        <p>Please enter your username and password</p>
+      </div>
+      <form id="Login" #formLogin="ngForm" (ngSubmit)="login(formLogin)">
+
+        <div class="form-group">
+
+
+          <input type="text" class="form-control" id="inputEmail" placeholder="Username" ngModel name="username" #username="ngModel">
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" ngModel name="password" #passwords="ngModel">
+
+        </div>
+
+
+
+        <!-- <div *ngIf="loginSuccess" id="loader"></div>
+
+        <div *ngIf="loginSuccess" class="loading">Loading&#8230;</div> -->
+
+
+        <div *ngIf="loginSuccess" id="loader"></div>
+
+
+        <div *ngIf="loginSuccess" class="loading">Loading&#8230;</div>
+
+
+
+
+
+        <!-- <div *ngIf="loginSuccess" id="loader"></div>
+
+        <div *ngIf="loginSuccess" class="loading">Loading&#8230;</div> -->
+
+
+        
+
+
+        <div *ngIf="showEr" class="alert alert-danger">
+          <strong>Error!</strong> {{tb}}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+
+      </form>
+    </div>
+    <p class="botto-text"> Designed by Sunil Rajput</p>
+  </div>
+</div>

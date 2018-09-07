@@ -1,0 +1,449 @@
+<app-header></app-header>
+<section class="index">
+  <div class="container">
+    <div class="row">
+      <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+        <ul class="list-unstyled listCate hasIcon ">
+          <li *ngFor="let menu of menus" class="hasSubListCate">
+            <i class="fa fa-angle-right"></i>
+            <a href="/product/group-category/{{menu.id}}">{{menu.name}}</a>
+            <div class="subListCate">
+              <a *ngFor="let category of menu.category" href="/product/category/{{category.id}}">{{category.name}}</a>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 ">
+        <div class="slideshow">
+          <owl-carousel [options]="{items: 1, loop:true,
+          margin:0, autoplay:true, autoplayTimeout:5000, nav:true, dots:true, navText: false}" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+            <div class="item-slide">
+              <a href="#">
+                <img class="img-responsive" src="../../../assets/shop/images/slideshow1.jpg">
+              </a>
+            </div>
+            <div class="item-slide">
+              <a href="#">
+                <img class="img-responsive" src="../../../assets/shop/images/slideshow2.jpg">
+              </a>
+            </div>
+          </owl-carousel>
+        </div>
+      </div>
+    </div>
+    <!-- End Row -->
+    <div class="clearfix">
+      <div class="coDownCollection">
+        <h2 class="titleDecoration">
+          <span class="line"></span>
+          <span class="title fz18">Sản phẩm khuyến mại</span>
+        </h2>
+
+        <div class="slideProducts">
+          <owl-carousel [options]="{loop:true, margin:15, autoplay:true, autoplayTimeout:13000, nav:true, dots:false, navText: false, responsive:{
+          '0':{
+              items:1
+          },
+          '557':{
+              items:2
+          },
+          '992':{
+              items:4
+          },
+          '1227':{
+              items:6
+          }
+      }}" [items]="productSale" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+            <!-- Item -->
+            <div *ngFor="let product of productSale; let i = index" class=" item item-slideProducts">
+              <div class="productGrid">
+                <div class="productSale">-{{product.promotion}}%</div>
+                <!-- <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div> -->
+                <div class="productImg">
+                  <a href="/product/detail/{{product.id}}" title="{{product.name}}">
+                    <img src="{{product.linkImage}}" class="img-responsive" alt="{{product.name}}" style="display: inline;">
+                  </a>
+                  <div class="hoverButtons">
+                    <span data-toggle="modal" data-target="#998">
+                      <a class="button quickview-btn" ngbTooltip="Cho vào giỏ hàng">
+                        <i class="fa fa-shopping-cart"></i>
+                      </a>
+                    </span>
+
+                    <span data-toggle="modal" data-target="#999">
+                      <a class="button quickview-btn" ngbTooltip="Xem nhanh">
+                        <i class="fa fa-search"></i>
+                      </a>
+                    </span>
+
+                    <a href="#" class="button skype" ngbTooltip="Tư vấn qua Skype">
+                      <i class="fab fa-skype"></i>
+                    </a>
+                  </div>
+                </div>
+                <h3>
+                  <a href="/product/detail/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+                </h3>
+                <div class="productPrice">
+                  <del>{{product.price|currency:'VND':''}}₫</del>
+                  <span>{{product.price-(product.price*product.promotion/100) |currency:'VND':''}}đ</span>
+                </div>
+                <form class="actions clearfix" method="post" action="#">
+                  <a href="#" class="button">
+                    <i class="hoverButton"></i>Chọn sản phẩm</a>
+                </form>
+              </div>
+            </div>
+            <!-- End Item -->
+          </owl-carousel>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Slide Product -->
+    <div class="hidden-xs clearfix">
+      <div class="threBanner">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <img src="../../../assets/shop/images/banner1.jpg" data-original="../../../assets/shop/images/banner1.jpg" alt="" class="img-responsive">
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <img src="../../../assets/shop/images/banner2.jpg" data-original="../../../assets/shop/images/banner2.jpg" alt="" class="img-responsive">
+        </div>
+      </div>
+    </div>
+    <!-- Banner -->
+
+    <div *ngFor="let menu of menus" class="bigCollection s{{color+1}}" id="bigCollection_1">
+      <div class="controlTabsWrapper">
+        <div class="controlTabs">
+          <h2 class="title hidden-xs hidden-sm">{{menu.name}}</h2>
+          <a href="#navBigCollectionMobile1" class="title hidden-md hidden-lg bigCollectionBtnNav dropDownButton" data-toggle="collapse">Điện
+            lạnh
+            <i class="fa fa-bars"></i>
+          </a>
+          <div class="navBigCollectionMobile dropList hidden-md hidden-lg collapse" id="navBigCollectionMobile1">
+            <ul class="nav nav-tabs tabAJAXProducts" role="tablist">
+
+              <li *ngFor="let category of menu.category" role="presentation">
+                <a href="#taba2" data-collection="may-lanh" role="tab" data-toggle="tab">{{category.name}}</a>
+                <a href="#" class="readMore" ngbTooltip="Xem thêm sản phẩm khác">+</a>
+              </li>
+
+            </ul>
+          </div>
+          <ul class="nav nav-tabs tabAJAXProducts hidden-xs hidden-sm" role="tablist">
+            <li *ngFor="let category of menu.category" role="presentation">
+              <a href="#taba2" data-collection="may-lanh" role="tab" data-toggle="tab">{{category.name}}</a>
+              <a href="#" class="readMore" ngbTooltip="Xem thêm sản phẩm khác">+</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End ControlTabsWrapper -->
+      <div class="tabContentWrapper">
+        <div class="tabContent">
+          <div class="tab-pane fade in active" id="taba1" role="tabpanel">
+            <!-- Item -->
+            <div *ngFor="let product of menu.product" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="productGrid">
+                <div *ngIf="product.promotion > 0" class="productSale">
+                  <span>-{{product.promotion}}%</span>
+                </div>
+                <div class="productImg">
+                  <a href="/product/detail/{{product.id}}" title="{{product.name}}">
+                    <img src="{{product.linkImage}}" data-original="../../../assets/shop/images/apihulozuab22v.jpg" class="img-fix" alt="{{product.name}}"
+                      style="display: inline;">
+                  </a>
+                  <div class="hoverButtons">
+                    <span data-toggle="modal" data-target="#999">
+                      <a class="button quickview-btn" ngbTooltip="Xem nhanh">
+                        <i class="fa fa-search"></i>
+                      </a>
+                    </span>
+                    <a href="#" class="button skype" ngbTooltip="Tư vấn qua Skype">
+                      <i class="fab fa-skype"></i>
+                    </a>
+                  </div>
+                </div>
+                <h3>
+                  <a href="/product/detail/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+                </h3>
+                <div class="productPrice">
+                  <del *ngIf="product.promotion > 0">{{product.price |currency:'VND':''}}₫</del>
+                  <span>{{product.price -product.price*product.promotion/100 |currency:'VND':''}}₫</span>
+                </div>
+                <form class="actions clearfix" method="post" action="#">
+                  <a href="#" class="button">
+                    <i class="hoverButton"></i>Chọn sản phẩm</a>
+                </form>
+              </div>
+            </div>
+            <!--End Item-->
+
+
+          </div>
+          <div class="tab-pane fade in" id="taba2" role="tabpanel"></div>
+          <div class="tab-pane fade in" id="taba3" role="tabpanel"></div>
+          <div class="tab-pane fade in" id="taba4" role="tabpanel"></div>
+          <div class="tab-pane fade in" id="taba5" role="tabpanel"></div>
+          <div class="tab-pane fade in" id="taba6" role="tabpanel"></div>
+          <div class="tab-pane fade in" id="taba7" role="tabpanel"></div>
+        </div>
+      </div>
+      <!--  tabContentWrapper -->
+    </div>
+    <!-- End s1 -->
+    <div class="brand">
+      <h2 class="titleDecoration">
+        <span class="line"></span>
+        <span class="title fz18">Nhãn hiệu liên kết</span>
+      </h2>
+      <div class="sliderBrand">
+        <owl-carousel [options]="{loop:true,
+          margin:0,
+          autoplay:true,
+          autoplayTimeout:4000,
+          nav:false,
+          dots:false,
+          navText: false,
+          responsive:{
+              '0':{
+                  items:2
+              },
+              '580':{
+                  items:4
+              },
+              '992':{
+                  items:7
+              }
+          }}" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+          <div class="item">
+            <img src="../../../assets/shop/images/brand01.png" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="../../../assets/shop/images/brand02.png" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="../../../assets/shop/images/brand03.png" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="../../../assets/shop/images/brand04.png" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="../../../assets/shop/images/brand05.png" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="../../../assets/shop/images/brand06.png" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="../../../assets/shop/images/brand07.png" class="img-responsive">
+          </div>
+        </owl-carousel>
+      </div>
+    </div>
+    <!-- End Brand -->
+  </div>
+  <!-- End Index -->
+</section>
+<div class="newsletter ">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <h3>Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng</h3>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <form action="#" class="formNewsLetter">
+          <input name="FormType" type="hidden" value="contact">
+          <input name="utf8" type="hidden" value="true">
+          <input type="hidden" name="contact[Name]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+          <input type="hidden" name="contact[Body]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+          <input type="email" name="contact[email]" required="" class="input-control" placeholder="Nhập email của bạn...">
+          <button>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Newsletter  -->
+
+<!-- Modal -->
+<app-footer></app-footer>
+<!-- <div id="999" class="modal fade" role="dialog">
+  <div class="quickViewWrapper">
+    <a href="#" class="close close-window" data-dismiss="modal" title="Close" href="">×</a>
+    <div class="quickViewCountDown" style="">236D : 22H : 2M : 5S</div>
+    <div class="clearfix">
+      <div class="quickViewImg">
+        <div class="quickViewFeaturedImg">
+          <div class="slideshow-product owl-carousel owl-theme">
+            <owl-carousel [options]="{
+              loop:true,
+              margin:0,
+              autoplay:false,
+              autoplayTimeout:4000,
+              nav:false,
+              dots:false,
+              navText: false,
+              URLhashListener:true,
+              startPosition: 'URLHash',
+              responsive:{
+                  '0':{
+                      items:1
+                  },
+                  '580':{
+                      items:1
+                  },
+                  '992':{
+                      items:1
+                  }
+              }
+          }" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+              <div class="item" data-hash="sp1">
+                <img src="../../../assets/shop/images/sp1.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+              </div>
+              <div class="item" data-hash="sp2">
+                <img src="../../../assets/shop/images/sp2.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+              </div>
+              <div class="item" data-hash="sp3">
+                <img src="../../../assets/shop/images/sp3.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+              </div>
+              <div class="item" data-hash="sp4">
+                <img src="../../../assets/shop/images/sp4.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+              </div>
+              <div class="item" data-hash="sp5">
+                <img src="../../../assets/shop/images/sp5.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+              </div>
+            </owl-carousel>
+          </div>
+        </div>
+        <div class="quickViewThumbImg">
+          <owl-carousel [options]="{
+              loop:false,
+              margin:0,
+              autoplay:false,
+              autoplayTimeout:4000,
+              nav:false,
+              dots:false,
+              navText: false,
+              URLhashListener:true,
+              startPosition: 'URLHash',
+              responsive:{
+                  '0':{
+                      items:5
+                  },
+                  '580':{
+                      items:5
+                  },
+                  '992':{
+                      items:5
+                  }
+              }
+          }" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+            <div class="sub-item">
+              <a href="#sp1">
+                <img src="../../../assets/shop/images/sub-1.jpg">
+              </a>
+            </div>
+            <div class="sub-item">
+              <a href="#sp2">
+                <img src="../../../assets/shop/images/sub-2.jpg">
+              </a>
+            </div>
+            <div class="sub-item">
+              <a href="#sp3">
+                <img src="../../../assets/shop/images/sub-3.jpg">
+              </a>
+            </div>
+            <div class="sub-item">
+              <a href="#sp4">
+                <img src="../../../assets/shop/images/sub-4.jpg">
+              </a>
+            </div>
+            <div class="sub-item">
+              <a href="#sp5">
+                <img src="../../../assets/shop/images/sub-5.jpg">
+              </a>
+            </div>
+          </owl-carousel>
+        </div>
+      </div>
+      <div class="quickViewProduct">
+        <div class="quickViewProductTitle">
+          <a href="#">Bếp hồng ngoại Midea MIR-T2015DC</a>
+        </div>
+        <div class="quickViewProductMeta clearfix">
+          <div class="quickViewProductVendor">NSX:
+            <b>Midea</b>
+          </div>
+          <div class="quickViewProductBrand">Loại:
+            <b>Bếp điện</b>
+          </div>
+          <div class="quickViewProductsku" style="display: none;"></div>
+          <div class="quickViewProductBarcode">Mã SP:
+            <b>T2015DC</b>
+          </div>
+        </div>
+        <div class="quickViewProductPrice hasMarginTop">
+          <span>900.000 VND</span>
+          <del style="">1.300.000 VND</del>
+        </div>
+        <div class="quickViewProductActions clearfix">
+          <form action="#" method="post" class="quickViewProductVariants" id="product-actions-5868449">
+            <div class="quickViewProductQuantity clearfix">
+              <label>Số lượng:</label>
+              <div class="quickViewProductQuantityGroup">
+                <button class="button quickViewProductQuantityButton">-</button>
+                <input type="text" title="Số lượng" value="1" min="1" class="quickviewQty" id="quickviewQty" name="quantity">
+                <button class="button quickViewProductQuantityButton">+</button>
+              </div>
+            </div>
+            <div class="quickViewProductButtons">
+              <button class="button quickViewAddCart">
+                <i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng
+              </button>
+              <a href="javascript:void(0);" class="button quickViewContact" style="display:none;" data-code="T2015DC">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                Đặt hàng
+              </a>
+              <a href="#" title="Tư vấn qua Skype" class="button skype">
+                <i class="fa fa-skype"></i>
+              </a>
+            </div>
+            <input type="hidden" name="variantId" value="9363066">
+          </form>
+        </div>
+        <a href="tel:0868155456" class="boxHotline">
+          <i class="fa fa-volume-control-phone"></i> 0868.155.456</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="998" class="modal fade" role="dialog">
+  <div class="noticeAddWrapper">
+    <a href="#" class="close" data-dismiss="modal">×</a>
+    <span class="noteAddWrapper">✔ Thêm vào giỏ hàng thành công!</span>
+    <div class="clearfix">
+      <div class="noticeAddImg">
+        <a href="">
+          <img src="../../../assets/shop/images/big-165330-bep-hong-ngoai-midea-mir-t2015dc.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+        </a>
+      </div>
+      <div class="noticeAddInfo">
+        <div class="noticeAddInfoTitle">Bếp hồng ngoại Midea MIR-T2015DC</div>
+        <div class="noticeAddInfoQty">
+          <i>Số lượng: 1</i>
+        </div>
+        <div class="noticeAddInfoPrice">900.000 VND</div>
+      </div>
+    </div>
+    <div class="clearfix noticeAddBottom">
+      <a href="#" data-dismiss="modal" class="left button">
+        <i class="hoverButton"></i>Tiếp tục mua hàng</a>
+      <a href="#" class="right button">
+        <i class="hoverButton"></i>Thanh toán</a>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,66 @@
+<h1 class="text-center">
+  Update Product</h1>
+<form (ngSubmit) = "updateProduct()" #Product = "ngForm"  >
+  <div class="form-group">
+    <label for="id">Id Product:</label>
+    <input disabled type="idProduct" [(ngModel)] = "product.id" ngModel name="idProduct" class="form-control" id="email">
+  </div>
+  <div class="form-group" [class.has-error]="categoryProduct.touched && categoryProduct.errors?.required">
+    <label for="categoryProduct">Category:</label>
+    <select class = "form-control" required #categoryProduct = "ngModel" [(ngModel)] = "product.category" ngModel name="categoryProduct" class="form-control"  >
+      <option [value] = "product.category" selected >{{product.category.name}}</option>
+      <option *ngFor="let category of categories" [ngValue] = "category">
+        {{ category.name }}
+      </option>
+    </select>
+    <small class="help-block" *ngIf= "categoryProduct.touched && categoryProduct.errors?.required">Category name is required!!! </small>
+    <!-- <input type="idCategory" [(ngModel)] = "product.idCategory"  ngModel name="idCategory" class="form-control" id="idCategory"> -->
+  </div>
+  <div class="form-group" [class.has-error]="nameProduct.touched && nameProduct.errors?.required">
+    <label for="name">Name :</label>
+    <input type="text" required [(ngModel)] = "product.name" #nameProduct = "ngModel" ngModel name="nameProduct" class="form-control" id="name">
+    <small class="help-block" *ngIf= "nameProduct.touched && nameProduct.errors?.required">Product name is required!!! </small>
+  </div>
+  <div class="form-group" [class.has-error]="quantity.touched && quantity.errors?.required">
+    <label for="quantity">Quantity:</label>
+    <input type="number" required [(ngModel)] = "product.quantity" #quantity = "ngModel" ngModel name="quantity" class="form-control" id="quantity">
+    <small class="help-block" *ngIf= "quantity.touched && quantity.errors?.required">Quantity product is required!!! </small>
+  </div>
+  <div class="form-group" [class.has-error]="priceProduct.touched && priceProduct.errors?.required">
+    <label for="priceProduct">Price:</label>
+    <input type="number" required [(ngModel)] = "product.price"  #priceProduct = "ngModel" ngModel name="priceProduct" class="form-control" id="priceProduct">
+    <small class="help-block" *ngIf= "priceProduct.touched && priceProduct.errors?.required">Price product is required!!! </small>
+  </div>
+  <div class="form-group">
+    <label for="promotion">Promotion:</label>
+    <input type="number" [(ngModel)] = "product.promotion" maxlength="3"  ngModel name="promotion" class="form-control" id="promotion">
+  </div>
+  <div class="form-group">
+    <label for="tag">Tag:</label>
+    <input type="text" [(ngModel)] = "product.tag" ngModel name="tag" class="form-control" id="tag">
+  </div>
+  <div class="form-group" [class.has-error]="detail.touched && detail.errors?.required">
+    <label for="detail">Detail:</label>
+    <input type="text" required [(ngModel)] = "product.details" #detail = "ngModel" ngModel name="detail" class="form-control" id="detail">
+    <small class="help-block" *ngIf= "detail.touched && detail.errors?.required">Detail product is required!!! </small>
+  </div>
+  <div class="form-group">
+    <label for="descript">Description:</label>
+    <input type="text" [(ngModel)] = "product.description"  ngModel name="descript" class="form-control" id="descript">
+  </div>
+  <div class="form-group">
+    <label for="content">Content:</label>
+    <input type="text" [(ngModel)] = "product.content" class="form-control" ngModel name="content" id="content">
+  </div>
+  <div class="form-group">
+    <label for="linkImage">Image:</label>
+    <img [src]="imageUrl" width="150px" height="150px" alt="">
+    <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%</div>
+    </div>
+    <input type="file" (change)="selectFile($event)" class="form-control" name="linkImage" id="linkImage">
+  </div>
+  <button class="btn btn-primary" [disabled] = "Product.invalid">Submit</button>
+</form>

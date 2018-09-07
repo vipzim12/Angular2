@@ -1,0 +1,34 @@
+<form action="/action_page.php">
+  <div class="form-group">
+    <label for="idOD">UserName :</label>
+    <input type="idOD" name="username"  [(ngModel)]="user.username" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Password:</label>
+    <input type="idOD" name="password" [(ngModel)]="user.password" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="role">Role:</label>
+    <select class="form-control" name="user.role.roleId" [(ngModel)]="user.role.roleId" #category="ngModel">
+      <option [ngValue]="1">Admin</option>
+      <option [ngValue]="2">User</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="idOD">FullName:</label>
+    <input type="idOD" name="fullName" [(ngModel)]="user.fullName" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Email:</label>
+    <input type="idOD" name="email" [(ngModel)]="user.email" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Address:</label>
+    <input type="idOD" name="address" [(ngModel)]="user.address" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Phone:</label>
+    <input type="idOD" name="phone" [(ngModel)]="user.phone" class="form-control" id="idOD">
+  </div>
+  <button type="submit" (click)="updateUser()" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,87 @@
+<h1 class="text-center">
+  Create New Product</h1>
+
+<form (ngSubmit)="insertProduct(addNewProduct.value)" #addNewProduct="ngForm">
+
+  <!-- <div class="form-group">
+    <label for="id">Id Product:</label>
+    <input type="idProduct" #txtID = "ngModel"  ngModel name="idProduct" class="form-control" id="email">
+  </div> -->
+
+  <div class="form-group" [class.has-error]="category.touched && category.errors?.required">
+    <label for="idCategory">Category:</label>
+    <!-- <input type="idCategory" [(ngModel)] = "product.idCategory" ngModel name="idCategory" class="form-control" id="idCategory"> -->
+    <select required class="form-control" name="category" #category="ngModel" ngModel>
+      <option value="" disabled selected>Choose Category</option>
+      <option *ngFor="let category of categories" [ngValue]="category">
+        {{ category.name }}
+      </option>
+    </select>
+
+    <small class="help-block" *ngIf="category.touched && category.errors?.required">Category name is required!!! </small>
+
+  </div>
+  <div class="form-group" [class.has-error]="nameProduct.touched && nameProduct.errors?.required">
+    <label for="name">Name :</label>
+    <input type="name" required #nameProduct="ngModel" ngModel name="nameProduct" class="form-control" id="nameProduct">
+    <small class="help-block" *ngIf="nameProduct.touched && nameProduct.errors?.required">Product name is required!!! </small>
+  </div>
+  <div class="form-group" [class.has-error]="priceProduct.touched && priceProduct.errors?.required">
+    <label for="price">Price:</label>
+    <input type="number" required #priceProduct="ngModel" ngModel name="priceProduct" class="form-control" id="priceProduct">
+    <small class="help-block" *ngIf="priceProduct.touched && priceProduct.errors?.required">Price product is required!!! </small>
+  </div>
+  <div class="form-group" [class.has-error]="quantity.touched && quantity.errors?.required">
+    <label for="quantity">Quantity:</label>
+    <input type="number" required #quantity="ngModel" ngModel name="quantity" class="form-control" id="quantity">
+    <small class="help-block" *ngIf="quantity.touched && quantity.errors?.required">Quantity product is required!!! </small>
+  </div>
+  <div class="form-group">
+    <label for="promotion">Promotion:</label>
+    <input type="number" #promotionProduct="ngModel" ngModel name="promotionProduct" class="form-control" id="promotionProduct">
+  </div>
+  <div class="form-group">
+    <label for="tag">Tag:</label>
+    <input type="text" #tagProduct ngModel name="tagProduct" class="form-control" id="tagProduct">
+  </div>
+  <div class="form-group" [class.has-error]="detailProduct.touched && detailProduct.errors?.required">
+    <label for="detail">Detail:</label>
+    <input type="text" #detailProduct="ngModel" required ngModel name="detailProduct" class="form-control" id="detail">
+    <small class="help-block" *ngIf="detailProduct.touched && detailProduct.errors?.required">Detail product is required!!! </small>
+
+  </div>
+  <div class="form-group" [class.has-error]="descripProduct.touched && descripProduct.errors?.required">
+    <label for="descript">Description:</label>
+    <input type="text" #descripProduct ngModel name="descripProduct" class="form-control" id="descripProduct">
+
+
+    <small class="help-block" *ngIf="descripProduct.touched && descripProduct.errors?.required">Description product is required!!! </small>
+  </div>
+  <div class="form-group">
+    <label for="content">Content:</label>
+    <input type="text" #contentProduct="ngModel" class="form-control" ngModel name="contentProduct" id="contentProduct">
+  </div>
+  <div class="form-group">
+    <img *ngIf="imageUrl" [src]="imageUrl" width="150px" height="150px" alt="">
+    <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%</div>
+    </div>
+    <label for="linkImage">Image:</label>
+
+    <input type="file" (change)="onFileSelected($event)" #imageProduct="ngModel" accept="image/*" class="form-control" ngModel
+      name="imageProduct" id="imageProduct">
+
+    
+  </div>
+  <!-- <div class="form-group form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"> Remember me
+    </label>
+  </div> -->
+
+
+  <button class="btn btn-primary" [disabled]="addNewProduct.invalid">Submit</button>
+
+</form>

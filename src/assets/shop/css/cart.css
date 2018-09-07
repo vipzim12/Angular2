@@ -1,0 +1,128 @@
+.cartPage .defaultPageTitle,
+.cartPageTitle {
+    font-size: 26px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    margin-bottom: 27px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', sans-serif;
+}
+.cartPage .cartPageTitle {
+    font-size: 22px;
+    margin: 20px 0;
+	color: #555555;
+}
+.cartPage .tableCart img {
+    width: 70px;
+}
+.cartPage .tableCart > thead > tr > th {
+    line-height: 30px;
+}
+.cartPage .tableCart .cartQtyGroup .cartQtyButton {
+    line-height: 38px;
+    font-size: 16px;
+    width: 40px;
+    height: 40px;
+    float: left;
+    background: transparent;
+    color: #333;
+    border: solid 1px #e1e1e1;
+}
+.cartPage .tableCart .cartQtyGroup .cartQtyButton:hover {
+    color: #fff;
+    background: #33cbcc;
+    border-color: #33cbcc;
+}
+.cartPage .tableCart .cartQtyGroup .input-control {
+    height: 40px;
+    width: 40px;
+    float: left;
+    text-align: center;
+    background: #fff;
+    pointer-events: none;
+    border-left: 0;
+    border-right: 0;
+}
+.cartPage .tableCart tbody > tr:nth-of-type(2n+2),
+.cartPage .tableCart thead th {
+    background: #f8f8f8;
+}
+.cartPage .tableCart tbody > tr > td {
+    vertical-align: middle;
+}
+.cartPage .table-responsive {
+    border: 1px solid #ddd;
+    overflow-x: initial;
+}
+
+.cartPage .table-responsive .tableCart tbody > tr  > td > a > i{
+	color: #5b5b5b;
+	font-size: 20px;
+}
+.cartPage .table-responsive .tableCart tbody > tr  > td > a > i:hover{
+	color: #33cbcc;
+}
+.cartPage .defaultPageContent img {
+    max-width: 100% !important;
+}
+.cartPage .pageCartButton {
+    width: 350px;
+    margin-top: 20px;
+}
+.cartPage .pageCartSumary h3 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+	color: #555555;
+}
+.cartPage .pageCartSumary .pageCartSumaryTable {
+    width: 100%;
+    border: solid 1px #ddd;
+}
+.cartPage .pageCartSumary .pageCartSumaryTable tr:nth-of-type(2n+2) {
+    background: #f8f8f8;
+	color: #555555;
+}
+.cartPage .pageCartSumary .pageCartSumaryTable td {
+    padding: 10px 8px;
+	color: #555555;
+}
+.cartPage .pageCartSumary .button:hover {
+    color: #fff;
+}
+.cartPage .left {
+    float: left;
+}
+.cartPage .right {
+    float: right;
+}
+.cartPage .pageCartButton .button,
+.cartPage .pageCartSumary .button {
+    background: #33cbcc;
+    color: #fff;
+    padding: 15px 25px;
+    margin-top: 20px;
+    border: none;
+	text-decoration: none;
+}
+.cartPage .pageCartSumary .button {
+    line-height: 55px;
+}
+
+.cartPage tbody #product_name{
+    color: #5b5b5b;
+	font-weight: bold;
+}
+
+.cartPage tbody #product_name:hover{
+	color: #33cbcc;
+	text-decoration: none;
+}
+
+.cartPage tr th{
+	color: #555555;
+}
+

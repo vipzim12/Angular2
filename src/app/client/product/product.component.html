@@ -1,0 +1,172 @@
+<app-header></app-header>
+<div class="breadcrumb">
+  <div class="container">
+    <ol class="list-unstyled list-inline">
+      <li>
+        <a href="/" itemprop="item">
+          <i class="fa fa-home"></i>
+          <span>Trang chủ</span>
+        </a>
+      </li>
+      <li>
+        <span class="divide">
+          <i class="fa fa-angle-right"></i>
+        </span>
+      </li>
+      <li>
+        <span class="current" itemprop="item">
+          <b>Tất Cả Sản Phẩm</b>
+        </span>
+      </li>
+    </ol>
+  </div>
+</div>
+<!-- End Breadcrumb -->
+<section class="blogPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-push-3 col-lg-push-3">
+        <div class="topImgCollection">
+          <h1 class="titleCollection">Tất cả sản phẩm</h1>
+          <img src="../../../assets/shop/images/bg_collection.jpg" class="img-responsive" alt="Tất cả sản phẩm">
+          <div class="bg"></div>
+        </div>
+        <div class="toolsCollection clearfix">
+          <div class="boxSelect">
+            <label for="">Sắp xếp</label>
+            <span class="boxSelectDown">
+              <i class="fa fa-angle-down"></i>
+            </span>
+            <select name="sortBy" id="sortBy" (change)="selectSort()" [(ngModel)]="selectOption">
+              <option value="default">Mặc định</option>
+              <option value="alpha-asc">A → Z</option>
+              <option value="alpha-desc">Z → A</option>
+              <option value="price-asc">Giá tăng dần</option>
+              <option value="price-desc">Giá giảm dần</option>
+            </select>
+          </div>
+          <a href="/product" class="switchView active viewCollection" ngbTooltip="Xem dạng lưới">
+            <i class="fa fa-th"></i>
+          </a>
+
+          <a href="productSingle.html" class="switchView viewCollection" ngbTooltip="Xem dạng danh sách">
+            <i class="fa fa-th-list"></i>
+          </a>
+        </div>
+
+
+
+        <!--List Product-->
+        <ngx-list-product [products]="productsIsShow"></ngx-list-product>
+
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-pull-9 col-lg-pull-9">
+        <div class="filter-container">
+          <div class="filtersTool filterCheckbox">
+            <h2 class="titleDecoration">
+              <span class="line"></span>
+              <span class="title">Lọc theo thương hiệu</span>
+            </h2>
+            <div class="filterToolGroup">
+              <ul class="list-unstyled clearfix">
+
+                <li *ngFor="let gCategory of gCategorys">
+                  <label class="container">
+                    <input type="checkbox" id="{{gCategory.id}}" (change)="changeValueCheckbox(gCategory)" [(ngModel)]="gCategory.isCheck" />
+                    <span class="ml-3">{{gCategory.name}}</span>
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- End FilterCheckbox -->
+
+          <div class="filtersTool filterRange">
+            <h2 class="titleDecoration">
+              <span class="line"></span>
+              <span class="title">Lọc theo giá</span>
+            </h2>
+            <div class="filterToolGroup">
+              <div id="slider" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+                <!--<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: %;"></span>
+                              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>-->
+              </div>
+              <div class="clearfix">
+                <div id="start" class="left">
+                  <input type="number" [(ngModel)]="min" step="1000000" min="0">
+                </div>
+                <div id="stop" class="right">
+                  <input type="number" [(ngModel)]="max" step="500000" max="1000000000">
+                </div>
+              </div>
+              <a id="filter-value" class="button" (click)="clickLoc()">
+                <i class="hoverButton"></i>Lọc</a>
+
+            </div>
+          </div>
+          <!-- EndFilterRange -->
+
+
+        </div>
+        <!-- End Filter Container -->
+        <div class="listProductsWrapper">
+          <h5 class="titleDecoration">
+            <span class="line"></span>
+            <span class="title">Sản phẩm khuyến mại</span>
+          </h5>
+          <div class="productSales" style="overflow-x: auto;height: 500px;">
+            <ul *ngFor="let product of productSale" class="list-unstyled listProducts">
+              <li class="clearfix">
+                <img src="{{product.linkImage}}" class="listsProductsImg" alt="{{product.name}}">
+                <div class="listsProductsInfo">
+                  <h5>
+                    <a routerLink="/product/detail/{{product.id}}">{{product.name}}</a>
+                  </h5>
+                  <div class="listsProductsPrice">
+                    <del>{{product.price |currency:'VND':''}}₫</del>
+                    <span>{{product.price -product.price*product.promotion/100 |currency:'VND':''}}₫</span>
+                    
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="sidebarPorductGroup">
+          <a href="#">
+            <img src="../../../assets/shop/images/banner_blog_page.jpg" class="img-responsive lazy" alt="Galaxy S6">
+          </a>
+        </div>
+        <!-- End SidebarPorductGroup -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End BlogPage -->
+<div class="newsletter ">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <h3>Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng</h3>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <form action="#" class="formNewsLetter">
+          <input name="FormType" type="hidden" value="contact">
+          <input name="utf8" type="hidden" value="true">
+          <input type="hidden" name="contact[Name]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+          <input type="hidden" name="contact[Body]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+          <input type="email" name="contact[email]" required="" class="input-control" placeholder="Nhập email của bạn...">
+          <button>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Newsletter  -->
+<app-footer></app-footer>

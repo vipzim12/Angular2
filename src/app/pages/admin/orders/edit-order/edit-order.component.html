@@ -1,0 +1,27 @@
+<form action="/action_page.php" (ngSubmit)="updateOrder()" >
+  <div class="form-group">
+    <label for="id">Id:</label>
+    <input disabled name="id" type="idOD" [(ngModel)] = "order.id" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Id Order Detail:</label>
+    <input type="idOD" name ="idOrderDetail" [(ngModel)] = "order.idOrderDetail" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">User :</label>
+    <input type="idOD"  name ="idUser" [(ngModel)] = "order.idUser" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Status:</label>
+    <input type="idOD" name ="status" [(ngModel)] = "order.status" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Payment Method:</label>
+    <input type="idOD" name ="paymentMethod"  [(ngModel)] = "order.paymentMethod" class="form-control" id="idOD">
+  </div>
+  <div class="form-group">
+    <label for="idOD">Coupon:</label>
+    <input type="idOD" name ="coupon" [(ngModel)] = "order.coupon" class="form-control" id="idOD">
+  </div>
+  <button type="submit"  class="btn btn-primary">Update</button>
+</form>

@@ -1,0 +1,122 @@
+<app-header></app-header>
+
+<div class="breadcrumb">
+  <div class="container">
+    <ol class="list-unstyled list-inline">
+      <li>
+        <a href="index.html" itemprop="item">
+          <i class="fa fa-home"></i>
+          <span>Trang chủ</span>
+        </a>
+      </li>
+      <li>
+        <span class="divide">
+          <i class="fa fa-angle-right"></i>
+        </span>
+      </li>
+      <li>
+        <span class="current" itemprop="item">
+          <b>Điều khoản</b>
+        </span>
+      </li>
+    </ol>
+  </div>
+</div>
+<!-- End Breadcrumb -->
+<section class="cartPage">
+  <div class="container">
+    <h1 class="cartPageTitle">Giỏ hàng của bạn</h1>
+
+    <form action="/cart" method="post">
+      <div class="table-responsive">
+        <table class="table tableCart">
+          <thead>
+            <tr>
+              <th style="width:100px;text-align:center;">Ảnh</th>
+              <th>Tên sản phẩm</th>
+              <th style="width:150px">Giá lẻ</th>
+              <th style="width:160px">Số lượng</th>
+              <th style="width:150px">Tổng cộng</th>
+              <th style="width:50px">Xóa</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of list">
+
+            <tr>
+              <td>
+                <a routerLink="/product/detail/{{item.cartId.product.id}}">
+
+                  <img alt="{{item.cartId.product.name}}" src="{{item.cartId.product.linkImage}}" class="img-fix">
+
+                </a>
+              </td>
+              <td>
+                <a routerLink="/product/detail/{{item.cartId.product.id}}" id="product_name">{{item.cartId.product.name}}</a>
+
+              </td>
+              <td>{{item.cartId.product.price*(100-item.cartId.product.promotion)}}</td>
+              <td>
+                <div class="cartQtyGroup">
+                  <button class="button cartQtyButton" (click)="giam(item)">-</button>
+                  <input type="text" value="{{item.quantity}}" min="1" pattern="[0-9]" class="input-control" name="Lines" id="Qty4326078">
+                  <button class="button cartQtyButton" (click)="tang(item)">+</button>
+                </div>
+              </td>
+              <td>
+                <b>{{item.cartId.product.price*(100-item.cartId.product.promotion)*item.quantity}}</b>
+              </td>
+              <td>
+                <a (click)="xoa(item)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="clearfix">
+        <div class="pageCartButton left">
+          <a routerLink="/home" class="button">Tiếp tục mua hàng</a>
+          <a (click)="capnhatgiohang()" class="button">Cập nhật giỏ hàng</a>
+        </div>
+        <div class="pageCartSumary right">
+          <h3 style="
+margin: 20px 0px;
+">Tổng cộng</h3>
+          <table class="pageCartSumaryTable">
+            <tbody>
+              <tr>
+                <td>
+                  <b>Tạm tính</b>
+                </td>
+                <td>{{total}}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Phí vận chuyển</b>
+                </td>
+                <td>Tính khi thanh toán</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>Thuế</b>
+                </td>
+                <td>Tính khi thanh toán</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Tổng cộng</b>
+                </td>
+                <td>{{total}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <a routerLink="/checkout" class="button">Tin hành thanh toán</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+<app-footer></app-footer>

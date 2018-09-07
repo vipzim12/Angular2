@@ -1,0 +1,376 @@
+<app-header></app-header>
+<div class="breadcrumb">
+  <div class="container">
+    <ol class="list-unstyled list-inline">
+      <li>
+        <a routerLink="/" itemprop="item">
+          <i class="fa fa-home"></i>
+          <span>Trang chủ</span>
+        </a>
+      </li>
+      <li>
+        <span class="divide">
+          <i class="fa fa-angle-right"></i>
+        </span>
+      </li>
+      <li>
+        <a routerLink="/product" itemprop="item">
+          <span>Sản phẩm</span>
+        </a>
+      </li>
+      <li>
+        <span class="divide">
+          <i class="fa fa-angle-right"></i>
+        </span>
+      </li>
+      <li>
+        <span class="current" itemprop="item">
+          <b>{{product.name}}</b>
+        </span>
+      </li>
+    </ol>
+  </div>
+</div>
+<!-- End Breadcrumb -->
+<section class="blogPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="row">
+          <div class="clearfix prodDetailQuickAddCartWrapper">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="quickViewImg">
+                <div class="quickViewFeaturedImg">
+                  <div>
+                    <div class="item" data-hash="sp1">
+                      <img src="{{product.linkImage}}" class="img-responsive" alt="{{product.name}}">
+                    </div>
+
+                  </div>
+                </div>
+                <div class="quickViewThumbImg owl-carousel owl-theme">
+                  <div class="sub-item">
+                    <a href="#sp1">
+                      <img src="{{product.linkImage}}">
+                    </a>
+                  </div>
+                  <div class="sub-item">
+                    <a href="#sp2">
+                      <img src="{{product.linkImage}}">
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+              <div class="quickViewProduct ">
+                <div class="quickViewProductTitle ">
+                  <a href="# ">{{product.name}}</a>
+                </div>
+                <!-- <div class="quickViewProductMeta clearfix ">
+                  <div class="quickViewProductVendor ">NSX:
+                    <b>Midea</b>
+                  </div>
+                  <div class="quickViewProductBrand ">Loại:
+                    <b>Bếp điện</b>
+                  </div>
+                  <div class="quickViewProductsku " style="display: none; "></div>
+                  <div class="quickViewProductBarcode ">Mã SP:
+                    <b>T2015DC</b>
+                  </div> -->
+                <!-- </div> -->
+                <div class="quickViewProductPrice hasMarginTop ">
+
+                  <span>{{(product.price -product.price*product.promotion/100 |currency:'VND':'')}} VND</span>
+                  <del *ngIf="product.promotion > 0">{{product.price |currency:'VND':''}} VND</del>
+
+                </div>
+                <div class="quickViewProductActions clearfix ">
+                  <form action="# " method="post " class="quickViewProductVariants " id="product-actions-5868449 ">
+                    <div class="quickViewProductQuantity clearfix ">
+                      <label>Số lượng:</label>
+                      <div class="quickViewProductQuantityGroup ">
+
+                        <button class="button quickViewProductQuantityButton " [disabled]="valueAmount <=0" (click)="subAmount()">-</button>
+                        <input type="text " title="Số lượng " value="{{valueAmount}} " min="1 " class="quickviewQty " id="quickviewQty
+                        " name="quantity ">
+                        <button class="button quickViewProductQuantityButton " (click)="addAmount()">+</button>
+
+                      </div>
+                    </div>
+                    <div class="quickViewProductButtons ">
+                      <button class="button quickViewAddCart " (click)="addIntoCart()">
+                        <i class="fa fa-shopping-cart "></i> Cho vào giỏ hàng
+                      </button>
+                      <a href="javascript:void(0); " class="button quickViewContact " style="display:none;
+                        " data-code="T2015DC ">
+                        <i class="fa fa-envelope-o " aria-hidden="true "></i>
+                        Đặt hàng
+                      </a>
+                      <a href="# " title="Tư vấn qua Skype " class="button skype ">
+                        <i class="fab fa-skype "></i>
+                      </a>
+                    </div>
+                  </form>
+                </div>
+                <a href="tel:18009999 " class="boxHotline ">
+                  <i class="fa fa-volume-control-phone "></i> 18009999</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="clearfix prodDetailTabs ">
+            <ul class="nav nav-tabs clearfix " role="tablist ">
+              <li role="presentation " class="active ">
+                <a href="#tab0 " aria-controls="tab1 " role="tab " data-toggle="tab " aria-expanded="true ">Thông số kỹ thuật
+                </a>
+              </li>
+            </ul>
+
+            <div class="prodDetailTabsContent tab-content ">
+              <div class="tab-pane fade active in " id="tab0 " role="tabpanel ">
+                <p></p>
+                <ul class="specs ">
+
+                  <li>
+                    <span class="specname ">Màn hình:</span>
+                    <span class="specval ">Super AMOLED, 6", Full HD+</span>
+                  </li>
+                  <li>
+                    <span class="specname ">Hệ điều hành:</span>
+                    <span class="specval ">ios 11</span>
+                  </li>
+                  <li>
+                    <span class="specname ">Camera trước:</span>
+                    <span class="specval ">12 MP</span>
+                  </li>
+                  <li>
+                    <span class="specname ">Camera sau:</span>
+                    <span class="specval ">12 MP</span>
+                  </li>
+                  <li>
+                    <span class="specname ">CPU:</span>
+                    <span class="specval ">Apple A11 Bionic 6 nhân</span>
+                  </li>
+                  <li>
+                    <span class="specname ">RAM:</span>
+                    <span class="specval ">3 GB</span>
+                  </li>
+
+                  <li>
+                    <span class="current ">Dung lượng pin:</span>
+                    <span class="current">2716 mAh, có sạc nhanh</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="clearfix relatedProdDetailWrapper col-lg-12 ">
+            <h2 class="titleDecoration fz18 ">
+              <span class="line "></span>
+              <span class="title ">Sản phẩm liên quan</span>
+            </h2>
+            <div class="relatedProdDetail  owl-theme col-lg-4 " id="relatedProdDetail " *ngFor="let pro of products">
+              <div class="item ">
+                <div class="productGrid ">
+                  <div class="productImg ">
+
+                    <a routerLink="/product/detail/{{pro.id}}" title="Máy giặt Panasonic NA-F100A1WRV ">
+
+                      <img src="{{pro.linkImage}} " data-original="images/sanpham-1.jpg
+                        " class="img-fix " alt="Máy giặt Panasonic NA-F100A1WRV " style="display: inline; ">
+                    </a>
+                    <div class="hoverButtons ">
+                      <span data-toggle="modal " data-target="#998 ">
+                        <a class="button quickview-btn " data-toggle="tooltip " data-placement="top " title="
+                        " data-countdown="null " data-alias="may-giat-panasonic-10-kg-na-f100a1wrv " data-original-title="Cho vào giỏ hàng ">
+                          <i class="fa fa-shopping-cart "></i>
+                        </a>
+                      </span>
+
+                      <span data-toggle="modal " data-target="#999 ">
+                        <a class="button quickview-btn " data-toggle="tooltip " data-placement="top " title="
+                        " data-countdown="null " data-alias="may-giat-panasonic-10-kg-na-f100a1wrv " data-original-title="Xem nhanh ">
+                          <i class="fa fa-search "></i>
+                        </a>
+                      </span>
+
+                      <a href="# " class="button skype " data-toggle="tooltip " data-placement="top " title="
+                        " data-original-title="Tư vấn qua Skype ">
+                        <i class="fa fa-skype "></i>
+                      </a>
+                    </div>
+                  </div>
+                  <h3>
+
+                    <a href="/product/detail/{{pro.id}}" title="Máy giặt Panasonic NA-F100A1WRV ">{{pro.name}}</a>
+                  </h3>
+                  <div class="productPrice ">
+                    <del *ngIf="product.promotion > 0">{{product.price |currency:'VND':''}}₫</del>
+                    <span>{{product.price -product.price*product.promotion/100 |currency:'VND':''}}₫</span>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+        <div class="sidebarBlog ">
+          <div class="sidebarBlogGroup ">
+            <!-- <a class="dropDownButton" data-toggle="collapse" href="#policyWrapper" role="button" aria-expanded="false" aria-controls="policyWrapper">Chính Sách -->
+
+            <a class="dropDownButton" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="policyWrapper">Chính Sách
+              <i class="fa fa-angle-up "></i>
+            </a>
+            <div class="policyWrapper collapse in" id="policyWrapper ">
+
+              <div class="policy ">
+                <i class="ico icoPolicy1 "></i>
+                <h4>Miễn phí vận chuyển </h4>
+                <p>Dành cho đơn hàng trong nội thành Hà Nội</p>
+              </div>
+              <div class="policy ">
+                <i class="ico icoPolicy2 "></i>
+                <h4>Hỗ trợ 24/7</h4>
+                <p>Hỗ trợ mọi lúc mọi nơi, hãy gọi ngay cho chúng tôi để được tư vấn</p>
+              </div>
+              <div class="policy ">
+                <i class="ico icoPolicy3 "></i>
+                <h4>Thanh toán khi nhận hàng</h4>
+                <p>Bạn có thể nhận hàng xong mới trả tiền cho chúng tôi nhằm đảm bảo quyền lợi khách hàng.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End SideBarBlog -->
+        <!-- <div class="sidebarBlog ">
+          <div class="sidebarBlogGroup ">
+            <a href="#complainForm " class="dropDownButton collapsed " data-toggle="collapse ">Khiếu nại
+              <i class="fa fa-angle-up "></i>
+            </a>
+            <div class="complainForm dropList collapse in" id="complainForm ">
+              <form action="# " class="AJAXFormContact ">
+                <div class="AJAXFormContactLoading " style="display:none ">
+                  <div class="loading-pulse "></div>
+                </div>
+                <div class="AJAXFormContactInput ">
+                  <input name="FormType " type="hidden " value="contact ">
+                  <input name="utf8 " type="hidden " value="true ">
+                  <input type="text " name="contact[Name] " value=" " placeholder="Họ và tên... " class="input-control
+                        " required=" ">
+                  <input type="email " name="contact[email] " required=" " value=" " placeholder="Email của bạn...
+                        " class="input-control ">
+                  <input type="tel " name="contact[Phone] " minlength="8 " maxlength="11 " placeholder="Số điện thoại...
+                        " class="input-control " required=" ">
+                  <textarea name="contact[Body] " placeholder="Nội dung... " class="input-control " required=" "></textarea>
+                  <button class="button ">Gửi</button>
+                  <i class="complainFormNote AJAXFormContactNote ">Hãy điền đầy đủ để chúng tôi có thể giải quyết nhanh nhất.</i>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div> -->
+        <!-- End SideBarBlog -->
+        <div class="sidebarBlog ">
+          <div class="sidebarBlogGroup ">
+            <a class="dropDownButton collapsed " data-toggle="collapse ">Hỗ trợ online
+              <!-- <a href="#teleSalesWraper " class="dropDownButton collapsed " data-toggle="collapse ">Hỗ trợ online -->
+              <i class="fa fa-angle-up "></i>
+            </a>
+
+            <div class="teleSalesWraper collapse in" id="teleSalesWraper ">
+
+              <div class="teleSale clearfix ">
+                <a href="# " class="teleSaleSkype ">
+                  <i class="fa fa-skype "></i>
+                </a>
+                <div class="teleSaleInfo ">
+                  <h4 class="teleSaleName ">Tư vấn 1</h4>
+                  <a href="tel:0868155456 " class="teleSalePhone ">0868.155.456</a>
+                </div>
+              </div>
+              <div class="teleSale clearfix ">
+                <a href="# " class="teleSaleSkype ">
+                  <i class="fa fa-skype "></i>
+                </a>
+                <div class="teleSaleInfo ">
+                  <h4 class="teleSaleName ">Tư vấn 2</h4>
+                  <a href="tel:08681554567 " class="teleSalePhone ">0868.155.4567</a>
+                </div>
+              </div>
+              <div class="teleSale clearfix ">
+                <a href="# " class="teleSaleSkype ">
+                  <i class="fa fa-skype "></i>
+                </a>
+                <div class="teleSaleInfo ">
+                  <h4 class="teleSaleName ">Tư vấn 3</h4>
+                  <a href="tel:086815545678 " class="teleSalePhone ">0868.155.45678</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End SideBarBlog -->
+        <!-- <div class="sidebarBlogDefault ">
+          <div class="listProductsWrapper recentlyProducts ">
+            <h2 class="titleDecoration ">
+              <span class="line "></span>
+              <span class="title ">Sản phẩm đã xem</span>
+            </h2>
+            <ul class="list-unstyled listProducts " id="recently-viewed-products ">
+              <li class="clearfix ">
+                <img src="../../../assets/shop/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg
+                        " class="listsProductsImg " alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít ">
+                <div class="listsProductsInfo ">
+                  <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít ">
+                    <a href="# ">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a>
+                  </h3>
+                  <div class="listsProductsPrice ">
+                    <span>800.000 VND</span>
+                    <del>1.200.000 VND</del>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <!-- End SidebarBlogDefault -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End BlogPage -->
+
+
+<div class="newsletter ">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <h3>Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng</h3>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <form action="#" class="formNewsLetter">
+          <input name="FormType" type="hidden" value="contact">
+          <input name="utf8" type="hidden" value="true">
+          <input type="hidden" name="contact[Name]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+          <input type="hidden" name="contact[Body]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+          <input type="email" name="contact[email]" required="" class="input-control" placeholder="Nhập email của bạn...">
+          <button>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

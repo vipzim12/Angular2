@@ -1,0 +1,15 @@
+<h1 class="text-center">
+  Update Group Categories</h1>
+<form (ngSubmit) = "updateGCategory()" #GCategory="ngForm" >
+  <div class="form-group">
+    <label for="idGCategory">Id Group Category:</label>
+    <input disabled type="idGCategory" [(ngModel)] = "gCategory.id" ngModel name="idGCategory" class="form-control" id="idGCategory">
+  </div>
+  <div class="form-group">
+    <label for="nameGCategory">Name Category:</label>
+    <input type="nameGCategory" required [(ngModel)] = "gCategory.name"  ngModel #nameGCategory="ngModel" name="nameGCategory" class="form-control" id="nameGCategory">
+    <small class="help-block" *ngIf="nameGCategory.touched && nameGCategory.errors?.required">Group-Category name is required!!! </small>
+  </div>
+
+  <button class="btn btn-primary" [disabled]="GCategory.invalid">Submit</button>
+</form>

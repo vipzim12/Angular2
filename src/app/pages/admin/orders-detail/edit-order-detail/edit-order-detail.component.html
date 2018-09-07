@@ -1,0 +1,105 @@
+<h2 class="text-center">
+  Create New Order</h2><br><br>
+
+<div class="row">
+
+  <nb-card>
+    <nb-card-header>Thông tin sản phẩm</nb-card-header>
+    <nb-card-body>
+      <div class=" col-sm-4 form-group" [class.has-error]="category.touched && category.errors?.required">
+        <label for="idCategory">Group Category:</label>
+        <select (change)="selectGroupCategory()" [(ngModel)]="selectOptionGCategory" required class="form-control" name="gcategory"
+          #category="ngModel" ngModel>
+          <option value="" disabled selected>Choose Group Category</option>
+          <option *ngFor="let gCategory of gCategories" value="{{gCategory.id}}">
+            {{ gCategory.name }}
+          </option>
+        </select>
+        <small class="help-block" *ngIf="category.touched && category.errors?.required">Group Category name is required!!!
+        </small>
+      </div>
+      <div class=" col-sm-4 form-group" [class.has-error]="category.touched && category.errors?.required">
+        <label for="idCategory">Category:</label>
+        <select (change)="selectCategory()" [(ngModel)]="selectOptionCategory" required class="form-control" name="category" #category="ngModel"
+          ngModel>
+          <option value="" disabled selected>Choose Category</option>
+          <option *ngFor="let category of categories" value="{{category.id}}">
+            {{ category.name }}
+          </option>
+        </select>
+        <small class="help-block" *ngIf="category.touched && category.errors?.required">Category name is required!!! </small>
+      </div>
+
+      <div class=" col-sm-4 form-group" [class.has-error]="category.touched && category.errors?.required">
+
+        <label for="idCategory">Product:</label>
+        <select (change)="selectProduct()" [(ngModel)]="selectOptionProduct" required class="form-control" name="product.name" ngModel>
+            <option value="" disabled selected>Choose Group Product</option>
+          <option *ngFor="let product of products" [ngValue]="product">
+            {{ product.name }}
+          </option>
+        </select>
+        <small class="help-block" *ngIf="category.touched && category.errors?.required">Product name is required!!! </small>
+      </div>
+
+
+      <div class=" col-sm-6 form-group">
+        <label for="idOD">Current Price :</label>
+        <input type="text" name="currentPrice" [(ngModel)]="orderDetail.currentPrice" value="{{orderDetail.currentPrice |currency:'VND':''}}"
+          class="form-control" id="idOD">
+      </div>
+      <div class=" col-sm-6 form-group">
+        <label for="idOD">Coupon:</label>
+        <input type="idOD" name="coupon" [(ngModel)]="orderDetail.coupon" value="-{{orderDetail.coupon}}%" class="form-control" id="idOD">
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="idOD">Quantity:</label>
+        <input type="number" (change)="handleInputQuantity()" name="quantity" [(ngModel)]="orderDetail.quantity" class="form-control">
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="idOD">Total:</label>
+        <input type="idOD" disabled name="total" [(ngModel)]="orderDetail.total" value="{{orderDetail.total |currency:'VND':''}}"
+          class="form-control">
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card>
+    <nb-card-header>Thông tin khách hàng</nb-card-header>
+    <nb-card-body>
+      <div class=" col-sm-6 form-group" [class.has-error]="orderDetail.customerFullName.touched && category.errors?.required">
+        <label for="idOD">Customer Name:</label>
+        <input type="idOD" name="customerName" [(ngModel)]="orderDetail.customerFullName" class="form-control" id="idOD">
+        <small class="help-block" *ngIf="category.touched && category.errors?.required">Customer name not empty!!! </small>
+      </div>
+      <div class=" col-sm-6 form-group">
+        <label for="idOD">Customer Email:</label>
+        <input type="idOD" name="customerEmail" [(ngModel)]="orderDetail.customerEmail" class="form-control" id="idOD">
+      </div>
+      <div class=" col-sm-6 form-group">
+        <label for="idOD">Customer Phone:</label>
+        <input type="idOD" name="customerPhone" [(ngModel)]="orderDetail.customerPhone" class="form-control" id="idOD">
+      </div>
+      <div class=" col-sm-6 form-group">
+        <label for="idOD">Customer Address:</label>
+        <input type="idOD" name="customerAddress" [(ngModel)]="orderDetail.customerAddress" class="form-control" id="idOD">
+      </div>
+      <div class=" form-group" [class.has-error]="category.touched && category.errors?.required">
+
+        <label for="idCategory">Payment Method:</label>
+        <select [(ngModel)]="orderDetail.paymentMethod" required class="form-control" name="paymentMethod" ngModel>
+          <option value="Thanh toán online" selected>{{orderDetail.paymentMethod}}</option>
+          <option value="Thanh toán online">Thanh toán online</option>
+          <option value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>
+        </select>
+        <small class="help-block" *ngIf="category.touched && category.errors?.required">Product name is required!!! </small>
+      </div>
+      <div class="form-group">
+        <label for="idOD">Description:</label>
+        <input type="idOD" name="description" [(ngModel)]="orderDetail.description" class="form-control" id="idOD">
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+</div>
+<button type="submit" (click)="updateOrderDetail()" class="btn btn-primary">UPDATE</button>
